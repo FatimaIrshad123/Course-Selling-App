@@ -5,7 +5,6 @@ const { Admin,Course } = require("../db");
 const router = Router();
 const {jwtSecret} = require('../config')
 
-// Admin Routes
 router.post('/signup', async(req, res) => {
     let username = req.body.username;
     let password = req.body.password;
@@ -76,12 +75,6 @@ router.get('/',async(req,res) => {
 })
 
 router.get('/me',adminMiddleware,async(req,res)=> {
-//     let username = req.body.username;
-//     let password = req.body.password;
-//     const admin = await Admin.find({username});
-// console.log(admin)
-    // let x = admin.find(x => x.username)
-    // console.log(x)
     res.json({
         user : req.user
     })
