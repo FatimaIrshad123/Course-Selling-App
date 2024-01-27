@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
-// Connect to MongoDB
 mongoose.connect('Your-moongodb-url/Course-Selling-App-with-jwt');
 
-// Define schemas
 const AdminSchema = mongoose.Schema({
     username : String,
     password : String
