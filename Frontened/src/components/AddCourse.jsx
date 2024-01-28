@@ -6,7 +6,6 @@ export default function AddCourse(){
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
     const [price,setPrice] = useState(0)
-
     return (
         <div style={{paddingTop:10}}>
             <center>
@@ -14,17 +13,16 @@ export default function AddCourse(){
                     <Typography variant={"h4"}> Create Course</Typography>
                 </div>
             </center>
-
-            <center>
-        <Card variant="outlined" style = {{border: '2px solid black',width:400,padding:20}}>
+        <center>
+            <Card variant="outlined" style = {{border: '2px solid black',width:400,padding:20}}>
             <TextField 
-            id={'title'}
-            label="Title" 
-            variant="outlined"
-            type="text" 
-            fullWidth={true} 
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+                id={'title'}
+                label="Title" 
+                variant="outlined"
+                type="text" 
+                fullWidth={true} 
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
             />
           <br /><br />
           <TextField 
@@ -36,7 +34,7 @@ export default function AddCourse(){
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             />
-                <br /><br />
+          <br /><br />
           <TextField 
             id={'title'}
             label="Title" 
@@ -51,28 +49,24 @@ export default function AddCourse(){
               variant="contained" size={"larger"} onClick={() => {
                 function callback2(data){
                     localStorage.setItem('token',data.token)
-                    console.log(data);
                   }
-  
                   function callback1(res){
                     res.json().then(callback2)
                   }
-
                 fetch('http://localhost:3000/admin/addcourses',{method:'POST',
-              body:JSON.stringify({
-                title,
-                description,
-                price,
-                published : true
-              }),
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization' : localStorage.getItem('token')
-              }})
-              .then(callback1)
-              }}>Add Course</Button>
+                  body:JSON.stringify({
+                    title,
+                    description,
+                    price,
+                    published : true
+                  }),
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization' : localStorage.getItem('token')
+                  }}).then(callback1)
+               }}>Add Course</Button>
             </Card>
-            </center>
-         </div>
+        </center>
+     </div>
     )
 }
