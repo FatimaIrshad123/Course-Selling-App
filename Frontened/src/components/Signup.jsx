@@ -7,7 +7,6 @@ import { useState } from "react";
 export default function Signup() {
     const [username,setUsername] = useState('')
     const [password,setpassword] = useState('')
-
     return (
       <div>
         <center>
@@ -15,11 +14,9 @@ export default function Signup() {
             <Typography variant={"h4"}> Welcome </Typography>
           </div>
         </center>
-        
         <center> 
         <Card variant="outlined" style = {{border: '2px solid black',width:400,padding:20}}>
           <TextField 
-                // id="standard-basic" 
                 label="Username" 
                 variant="standard" 
                 fullWidth={true} 
@@ -29,7 +26,6 @@ export default function Signup() {
                 onChange={e => setUsername(e.target.value)}/>
           <br /><br />
            <TextField 
-                // id="standard-basic" 
                 label="Password" 
                 variant="standard" 
                 id = {'password'}
@@ -37,18 +33,14 @@ export default function Signup() {
                 type="password" 
                 value={password}
               onChange={e => setpassword(e.target.value)}/>
-          <br /><br />
-          
+          <br /><br /
           <Button 
               variant="contained" 
               size={"larger"} 
               onClick={() => {
-                
                 function callback2(data){
                   localStorage.setItem('token',data.token)
-                  console.log(data);
                 }
-
                 function callback1(res){
                   res.json().then(callback2)
                 }
@@ -63,7 +55,7 @@ export default function Signup() {
             }).then(callback1)
             }}>
               Sign up
-                </Button>
+            </Button>
         </Card>
         </center>
       </div>
