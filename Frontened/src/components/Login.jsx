@@ -7,7 +7,6 @@ import CardContent from '@mui/material/CardContent';
 export default function Login() {
   const [username,setUsername] = useState('')
     const [password,setpassword] = useState('')
-
     return (
       <div>
         <center>
@@ -15,7 +14,6 @@ export default function Login() {
             <Typography variant={"h4"}> Welcome Back</Typography>
             </div>
         </center>
-
         <center> 
         <Card variant="outlined" style = {{border: '2px solid black',width:400,padding:20}}>
           <TextField 
@@ -42,9 +40,7 @@ export default function Login() {
               onClick={() => {
                 function callback2(data){
                   localStorage.setItem('token',data.token)
-                  console.log(data);
                 }
-
                 function callback1(res){
                   res.json().then(callback2)
                 }
@@ -63,5 +59,3 @@ export default function Login() {
       </div>
     )
   }
-  
- 
