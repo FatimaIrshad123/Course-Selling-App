@@ -7,21 +7,17 @@ export default function Appbar(){
     const [user,setuser] = useState(null)
     useEffect(() => {
         function callback2(data){
-            console.log(data);
-            console.log(data.user.username);
             if (data.user.username){
                 setuser(data.user.username)
             }
           }
-
-          function callback1(res){
-            res.json().then(callback2)
-          }
+        function callback1(res){
+          res.json().then(callback2)
+        }
         fetch('http://localhost:3000/admin/me',{method:'GET',
             headers:{'Authorization' : localStorage.getItem('token')}
         }).then(callback1)
     },[])
-
     if (user){
         return (
             <div style={{display:'flex',justifyContent:'space-between'}}>
@@ -37,7 +33,6 @@ export default function Appbar(){
             </div>
         )
     }       
-    
     return (
         <div style={{display:'flex',justifyContent:'space-between'}}>
             <div>
