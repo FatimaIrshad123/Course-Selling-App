@@ -3,10 +3,8 @@ import { useParams } from "react-router-dom"
 import { Typography, TextField, Button } from "@mui/material";
 import Card from '@mui/material/Card';
 
-
 export default function CourseId(){
     let {courseid} = useParams()
-    // console.log(courseid)
     const [data,setData] = useState('')
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
@@ -33,30 +31,26 @@ export default function CourseId(){
                     'No Course Found'
                 }
             })
-        )}
-    }
+        )}}
     function callback1(res){
         res.json().then(callback2)
     }
-
     fetch('http://localhost:3000/admin/courses',{method:'GET',
        headers:{'Authorization' : localStorage.getItem('token')}
      }) .then(callback1)
   },[])
-  
     return (
         <div  style = {{border: '2px',width:400,padding:20, marginTop:30, backgroundColor:'white'}} key={courseid}>          
             {data}
             <TextField 
-            id={'title'}
-            label="Title" 
-            variant="outlined"
-            type="text" 
-            fullWidth={true} 
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+                id={'title'}
+                label="Title" 
+                variant="outlined"
+                type="text" 
+                fullWidth={true} 
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
             />
-           
           <br /><br />
           <TextField 
             id={'description'}
@@ -67,7 +61,7 @@ export default function CourseId(){
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             />
-                <br /><br />
+           <br /><br />
           <TextField 
             id={'title'}
             label="Title" 
@@ -77,16 +71,13 @@ export default function CourseId(){
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             />
-
            <Button variant="contained" onClick={() => { 
                 function callback2(data){
                     alert('Course updated successfully');
                   }
-  
                   function callback1(res){
                     res.json().then(callback2)
                   } 
-        
                 fetch(`http://localhost:3000/admin/courses/${courseid}`,{method:'POST',
                         body:JSON.stringify({
                         title,
@@ -97,11 +88,8 @@ export default function CourseId(){
                   headers: {
                     'Content-Type': 'application/json',
                     'Authorization' : localStorage.getItem('token')
-                  }})
-                  .then(callback1)
-                  
+                  }}).then(callback1)
             }}> Update</Button>
         </div>
-
     )
 }
