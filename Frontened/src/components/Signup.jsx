@@ -33,7 +33,7 @@ export default function Signup() {
                 type="password" 
                 value={password}
               onChange={e => setpassword(e.target.value)}/>
-          <br /><br /
+          <br /><br />
           <Button 
               variant="contained" 
               size={"larger"} 
