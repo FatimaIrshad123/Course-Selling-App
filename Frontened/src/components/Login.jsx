@@ -40,6 +40,7 @@ export default function Login() {
               onClick={() => {
                 function callback2(data){
                   localStorage.setItem('token',data.token)
+                  alert(data.msg)
                 }
                 function callback1(res){
                   res.json().then(callback2)
