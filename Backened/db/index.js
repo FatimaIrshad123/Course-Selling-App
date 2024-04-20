@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://Fatima:Fatima@cluster0.7bunznc.mongodb.net/Course-Selling-App-with-jwt');
+mongoose.connect('your mongodb url');
 
 const AdminSchema = mongoose.Schema({
     username : String,
